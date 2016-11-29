@@ -68,6 +68,18 @@ public class Main {
         // εκτύπωση του board
         game.printBoard();
 
+        // ανακάτεμα row
+        game.shuffleRow(0);
+
+        // εκτύπωση του board
+        game.printBoard();
+
+        // ανακάτεμα column
+        game.shuffleColumn(0);
+
+        // εκτύπωση του board
+        game.printBoard();
+
         // κλείσιμο scanner
         keyboard.close();
 

@@ -75,13 +75,13 @@ public class Game implements Powers {
     }
 
     @Override
-    public void shuffleColumn() {
-
+    public void shuffleColumn(int column) {
+        board.shuffleColumn(column);
     }
 
     @Override
-    public void shuffleRow() {
-
+    public void shuffleRow(int row) {
+        board.shuffleRow(row);
     }
 
     @Override

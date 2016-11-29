@@ -5,9 +5,9 @@ public interface Powers {
 
     void shuffleLetters();
 
-    void shuffleColumn();
+    void shuffleColumn(int column);
 
-    void shuffleRow();
+    void shuffleRow(int row);
 
     void shuffleTable();
 }
