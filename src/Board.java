@@ -19,6 +19,7 @@ public class Board implements Powers {
     private void fillTable() {
         // λέξεις με γράμματα λιγότερα γράμματα ή ίσο από το μέγεθος του board
         List<Character> characters = dictionary.getLetters(size * size);
+        System.out.println(characters.size());
         int i = 0, j = 0;
         // για κάθε γράμμα της λέξης
         for (Character c : characters) {
@@ -46,7 +47,19 @@ public class Board implements Powers {
 
     @Override
     public void shuffleLetters() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //η hashmap δεν έχει standar σειρά, μιας και είναι τύπου Map
+        //μπορούμε να περάσουμε τις τιμές της σε μια λίστα και να την
+        //κάνουμε shuffle
+        //στην συνέχεια μπορούμε να περάσουμε σε κάθε κλειδί(point) το
+        //κάθε γράμμα εφόσον δεν μας πειράζει στο ποια θα είναι η αντιστοιχία
+        List<Letter> valueList = new ArrayList<>(table.values());
+        Collections.shuffle(valueList);
+        Iterator<Letter> valueIt = valueList.iterator();
+        HashMap<Point,Letter> newMap = new HashMap<Point,Letter>(table.size());
+        for(Point p: table.keySet()) {
+            newMap.put(p, valueIt.next());
+        }
+        table = newMap;
     }
 
     @Override
