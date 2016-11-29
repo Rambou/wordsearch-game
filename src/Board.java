@@ -1,7 +1,6 @@
 import java.awt.*;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class Board implements Powers {
 
@@ -62,7 +61,9 @@ public class Board implements Powers {
 
     @Override
     public void shuffleTable() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // ανακάτεμα γραμμάτων στον πίνακα
+        List keys = new ArrayList(table.keySet());
+        Collections.shuffle(keys);
     }
 
     @Override
