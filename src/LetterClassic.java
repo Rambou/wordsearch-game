@@ -1,7 +1,7 @@
 public class LetterClassic extends Letter {
 
-    public LetterClassic(Character letter, int point) {
-        super(letter, point);
+    public LetterClassic(Character letter) {
+        super(letter);
     }
 
     @Override

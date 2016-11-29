@@ -1,7 +1,7 @@
 public class LetterRed extends Letter {
 
-    public LetterRed(Character letter, int point) {
-        super(letter, point);
+    public LetterRed(Character letter) {
+        super(letter);
     }
 
     @Override

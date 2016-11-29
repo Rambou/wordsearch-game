@@ -59,6 +59,9 @@ public class Main {
             e.printStackTrace();
         }
 
+        // εκτύπωση του board
+        game.printBoard();
+
         // κλείσιμο scanner
         keyboard.close();
 

@@ -44,15 +44,16 @@ public class Dictionary {
 
                 // για κάθε γράμμα της λέξης
                 // το προσθέτει στην λίστα με τις γράμματα
-                for (int j = 0; j < words.get(i++).getLength(); j++) {
-                    letters.add(words.get(i++).getLetter(j));
+                for (int j = 0; j < words.get(i).getLength(); j++) {
+                    letters.add(words.get(i).getLetter(j));
                 }
 
                 sum += words.get(i).getLength();
                 // αφαίρεση λέξης από την λίστα
-                this.words.remove(words.get(i));
-            } else
+                this.words.remove(words.get(i++));
+            } else {
                 break;
+            }
         }
 
         // εάν η λίστα δεν έχει γεμίσει με γράμματα βάζουμε τυχαία κάποια

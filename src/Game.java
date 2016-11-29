@@ -55,8 +55,11 @@ public class Game {
         }
     }
 
+    public void printBoard() {
+        System.out.println(board);
+    }
+
     enum Mode {
         _5x5, _8x8, _10x10
     }
-
 }

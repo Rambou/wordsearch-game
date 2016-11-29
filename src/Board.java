@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Board implements Powers {
 
@@ -17,7 +18,7 @@ public class Board implements Powers {
     }
 
     private void fillTable() {
-        // λέξεις με γράμματα λιγότερα ή ίσο από το μέγεθος του board
+        // λέξεις με γράμματα λιγότερα γράμματα ή ίσο από το μέγεθος του board
         List<Character> characters = dictionary.getLetters(size * size);
         int i = 0, j = 0;
         // για κάθε γράμμα της λέξης
@@ -28,12 +29,6 @@ public class Board implements Powers {
             if (j == size - 1) {
                 j = 0;
                 i++;
-            }
-        }
-
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                //table = new RandomLetter();
             }
         }
     }
@@ -66,5 +61,21 @@ public class Board implements Powers {
     @Override
     public void shuffleTable() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        // κώδικας για να ψάχνουμε ένα-ένα τα στοιχεία του hashmap
+        for (Map.Entry<Point, Letter> entry : table.entrySet()) {
+            Point key = entry.getKey();
+            Letter value = entry.getValue();
+
+            sb.append(key.getLocation().toString() + " = " + value.getLetter().toString() + "\n");
+
+        }
+
+        return sb.toString();
     }
 }
