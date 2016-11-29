@@ -55,7 +55,7 @@ public class Board implements Powers {
         List<Letter> valueList = new ArrayList<>(table.values());
         Collections.shuffle(valueList);
         Iterator<Letter> valueIt = valueList.iterator();
-        HashMap<Point,Letter> newMap = new HashMap<Point,Letter>(table.size());
+        LinkedHashMap<Point,Letter> newMap = new LinkedHashMap<>(table.size());
         for(Point p: table.keySet()) {
             newMap.put(p, valueIt.next());
         }
