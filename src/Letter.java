@@ -1,9 +1,6 @@
 import java.util.HashMap;
 
 abstract class Letter {
-    //Πίνακας αξιών γραμμάτων
-    private static Character letter;
-    private static Integer point;
     private static HashMap<Character, Integer> values = new HashMap<>();
 
     static {
@@ -33,6 +30,10 @@ abstract class Letter {
         values.put('Ω', 3);
     }
 
+    //Πίνακας αξιών γραμμάτων
+    private Character letter;
+    private Integer point;
+
     // Αρχικοποίηση κλάσης
     public Letter(Character letter) {
         this.letter = letter;
@@ -53,4 +54,9 @@ abstract class Letter {
 
     // Υπολογισμός πόντου
     abstract int computePoint();
+
+    @Override
+    public String toString() {
+        return getLetter().toString();
+    }
 }

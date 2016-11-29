@@ -23,7 +23,9 @@ public class Board implements Powers {
         int i = 0, j = 0;
         // για κάθε γράμμα της λέξης
         for (Character c : characters) {
-            table.put(new Point(i, ++j), new LetterClassic(c));
+            Point p = new Point(i, ++j);
+            Letter l = new LetterClassic(c);
+            table.put(p, l);
             // αλλάζει γραμμή μόλις η στήλη j φτάσει το μέγεθος του πίνακα
             // και μηδενίζει στήλη και αυξάνει γραμμή
             if (j == size - 1) {
@@ -72,7 +74,7 @@ public class Board implements Powers {
             Point key = entry.getKey();
             Letter value = entry.getValue();
 
-            sb.append(key.getLocation().toString() + " = " + value.getLetter().toString() + "\n");
+            sb.append(key.getLocation() + " = " + value + "\n");
 
         }
 
