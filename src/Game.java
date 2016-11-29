@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class Game {
+public class Game implements Powers {
 
     // Ρυθμίσεις
     private static Integer SCORE_TO_WIN, WORDS_TO_MAKE,
@@ -58,6 +58,37 @@ public class Game {
     public void printBoard() {
         System.out.println(board);
     }
+
+    @Override
+    public void swapLetters(Letter a, Letter b) {
+
+    }
+
+    @Override
+    public void deleteRow(Integer line) {
+
+    }
+
+    @Override
+    public void shuffleLetters() {
+
+    }
+
+    @Override
+    public void shuffleColumn() {
+
+    }
+
+    @Override
+    public void shuffleRow() {
+
+    }
+
+    @Override
+    public void shuffleTable() {
+        board.shuffleTable();
+    }
+
 
     enum Mode {
         _5x5, _8x8, _10x10

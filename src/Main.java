@@ -62,6 +62,12 @@ public class Main {
         // εκτύπωση του board
         game.printBoard();
 
+        // ανακάτεμα board
+        game.shuffleTable();
+
+        // εκτύπωση του board
+        game.printBoard();
+
         // κλείσιμο scanner
         keyboard.close();
 

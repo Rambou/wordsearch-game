@@ -6,12 +6,12 @@ public class Board implements Powers {
 
     private Dictionary dictionary;
     private int size;
-    private HashMap<Point, Letter> table;
+    private LinkedHashMap<Point, Letter> table;
 
     public Board(int size, Dictionary dictionary) {
         this.dictionary = dictionary;
         this.size = size;
-        this.table = new HashMap<>();
+        this.table = new LinkedHashMap<>();
 
         fillTable();
     }
@@ -22,12 +22,12 @@ public class Board implements Powers {
         int i = 0, j = 0;
         // για κάθε γράμμα της λέξης
         for (Character c : characters) {
-            Point p = new Point(i, ++j);
+            Point p = new Point(i, j++);
             Letter l = new LetterClassic(c);
             table.put(p, l);
             // αλλάζει γραμμή μόλις η στήλη j φτάσει το μέγεθος του πίνακα
             // και μηδενίζει στήλη και αυξάνει γραμμή
-            if (j == size - 1) {
+            if (j == size) {
                 j = 0;
                 i++;
             }
@@ -69,14 +69,29 @@ public class Board implements Powers {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        int prev = 0; // κρατά την προηγούμενη θέση στον πίνακα στον άξονα x
 
         // κώδικας για να ψάχνουμε ένα-ένα τα στοιχεία του hashmap
         for (Map.Entry<Point, Letter> entry : table.entrySet()) {
             Point key = entry.getKey();
             Letter value = entry.getValue();
 
-            sb.append(key.getLocation() + " = " + value + "\n");
+            // ελέγχει αν η προηγούμενη θέση
+            // άλλαξε οπότε προσθέτει νέα γραμμή
+            if (key.getLocation().x != prev) {
+                sb.append("[");
+            }
 
+            // Εκτυπώνει το γράμμα
+            sb.append(value);
+
+            if (key.getLocation().y == this.size - 1) {
+                sb.append("]\n");
+            } else {
+                sb.append(", ");
+            }
+            prev = key.getLocation().x;
         }
 
         return sb.toString();
