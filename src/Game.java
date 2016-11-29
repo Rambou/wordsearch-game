@@ -1,5 +1,4 @@
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 public class Game implements Powers {
 
@@ -12,9 +11,6 @@ public class Game implements Powers {
     private Player player;
     private Board board;
     private Dictionary dictionary;
-    private int score;
-    private int no_of_words;
-    private ArrayList<Letter> letters;
 
     // Αρχικοποίση κλάσης παιχνδιού
     public Game(Integer score_to_win, Integer words_to_make, Integer max_swaps, Integer max_row_deletes,
