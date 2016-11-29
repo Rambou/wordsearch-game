@@ -16,7 +16,7 @@ public class Board implements Powers {
         fillTable();
     }
 
-    public static <K, V> void shuffleMap(Map<K, V> map) {
+    private <K, V> void shuffleMap(Map<K, V> map) {
         List<V> valueList = new ArrayList<V>(map.values());
         Collections.shuffle(valueList);
         Iterator<V> valueIt = valueList.iterator();
@@ -25,7 +25,7 @@ public class Board implements Powers {
         }
     }
 
-    public static <K, V> void shuffleRow(Map<K, V> map, int r) {
+    private <K, V> void shuffleRow(Map<K, V> map, int r) {
         List<V> valueList = new ArrayList<V>();
         for (K key : map.keySet()) {
             Point p = (Point) key;
@@ -44,7 +44,7 @@ public class Board implements Powers {
         }
     }
 
-    public static <K, V> void shuffleColumn(Map<K, V> map, int c) {
+    private <K, V> void shuffleColumn(Map<K, V> map, int c) {
         List<V> valueList = new ArrayList<V>();
         for (K key : map.keySet()) {
             Point p = (Point) key;
@@ -84,11 +84,12 @@ public class Board implements Powers {
 
     @Override
     public void swapLetters(Letter a, Letter b) {
+
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deleteRow(Integer line) {
+    public void deleteRow(Integer row) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

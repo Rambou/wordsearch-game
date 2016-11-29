@@ -60,24 +60,28 @@ public class Main {
         }
 
         // εκτύπωση του board
+        System.out.println("Αρχικός πίνακας");
         game.printBoard();
 
         // ανακάτεμα board
         game.shuffleTable();
 
         // εκτύπωση του board
+        System.out.println("Ανακατεμένος πίνακας");
         game.printBoard();
 
         // ανακάτεμα row
         game.shuffleRow(0);
 
         // εκτύπωση του board
+        System.out.println("Ανακατεμένος της πρώτης γραμμής του πίνακα");
         game.printBoard();
 
         // ανακάτεμα column
         game.shuffleColumn(0);
 
         // εκτύπωση του board
+        System.out.println("Ανακατεμένος της πρώτης στήλης του πίνακα");
         game.printBoard();
 
         // κλείσιμο scanner
