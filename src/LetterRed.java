@@ -4,7 +4,6 @@ public class LetterRed extends Letter {
         super(letter, point);
     }
 
-
     @Override
     int computePoint() {
         return super.getPoint() * 2;

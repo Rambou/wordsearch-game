@@ -39,7 +39,22 @@ public class Main {
 
         // Αρχικοποίηση παιχνιδιού
         try {
-            game.init(name, mode);
+            // επιλογή του mode
+            Game.Mode m;
+            switch (mode) {
+                case 1:
+                    m = Game.Mode._5x5;
+                    break;
+                case 2:
+                    m = Game.Mode._8x8;
+                    break;
+                default:
+                    m = Game.Mode._10x10;
+                    break;
+            }
+
+            // εκκίνηση
+            game.init(name, m);
         } catch (Exception e) {
             e.printStackTrace();
         }

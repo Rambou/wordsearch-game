@@ -34,28 +34,28 @@ public class Game {
     }
 
     // αρχικοποίηση παιχνιδιού
-    public void init(String name, Integer mode) throws Exception {
+    public void init(String name, Mode mode) throws Exception {
         // αρχικοποίηση του παίκτη
         this.player = new Player();
         player.setName(name);
 
         // Αρχικοποίηση του board
         switch (mode) {
-            case 1:
-                board = new Board(5);
+            case _5x5:
+                board = new Board(5, dictionary);
                 break;
-            case 2:
-                board = new Board(8);
+            case _8x8:
+                board = new Board(8, dictionary);
                 break;
-            case 3:
-                board = new Board(10);
+            case _10x10:
+                board = new Board(10, dictionary);
                 break;
             default:
-                throw new Exception("Unmet mode. Must be from 1 to 3.");
+                throw new Exception("To mode δεν υποστηρίζεται.");
         }
     }
 
-    enum mode {
+    enum Mode {
         _5x5, _8x8, _10x10
     }
 

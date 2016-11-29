@@ -93,6 +93,10 @@ public class Word {
         return points;
     }
 
+    public Character getLetter(int i) {
+        return word.charAt(i);
+    }
+
     public Integer getLength() {
         return word.length();
     }
