@@ -47,6 +47,11 @@ abstract class Letter {
         return letter;
     }
 
+    // θέτει το γράμμα
+    public void setLetter(Character letter) {
+        this.letter = letter;
+    }
+
     // Επιστροφή πόντου
     public int getPoint() {
         return point;

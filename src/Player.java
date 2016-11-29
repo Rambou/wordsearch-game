@@ -3,7 +3,6 @@ public class Player {
     // Ιδιοτητες κλάσης, Όνομα παίκτη, συνολικοί πόντοι, λέξεις
     private String name;
     private Integer points;
-    private Integer words;
 
     // Αρχικοποίηση κλάσης
     public Player() {
