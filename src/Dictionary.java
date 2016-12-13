@@ -62,6 +62,15 @@ public class Dictionary {
             letters.add(alphabet[r.nextInt(alphabet.length)]);
         }
 
+        // εδώ ο πίνακας γεμίζει τυχαία αντικαθιστώντας
+        // γράμματα με το ? που αντιστιχεί σε μπαλαντέρ
+        // επανάληψη με i μέχρι τυχαίο αριθμό από 0 έως 2
+        for (i = 0; i < r.nextInt(2); i++) {
+            // επιλογή τυχαίας θέσης στον πίνακα και
+            // αντικατάσταση γράμματος με το '?'
+            letters.add(r.nextInt(letters.size()), '?');
+        }
+
         return letters;
     }
 
@@ -70,5 +79,9 @@ public class Dictionary {
         this.words.removeAll(words);
     }
 
+    private List<Character> fillBalander() {
+
+        return;
+    }
 
 }
