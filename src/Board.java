@@ -104,7 +104,13 @@ public class Board implements Powers {
 
     @Override
     public void deleteRow(Integer row) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Map.Entry<Point, Letter> entry : table.entrySet()) {
+            if (entry.getKey().x == row) {
+                // τυχαίο γράμμα
+                Letter randLetter = new LetterClassic(dictionary.getRandomChar());
+                table.replace(entry.getKey(), randLetter);
+            }
+        }
     }
 
     @Override

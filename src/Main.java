@@ -100,6 +100,13 @@ public class Main {
         System.out.println("Πίνακας με αναδιάταξη των γραμμάτων στις θέσεις 0,0 και 0,1 του πίνακα");
         game.printBoard();
 
+        // διαγραφή πρώτης γραμμής
+        game.deleteRow(0);
+
+        // εκτύπωση του board
+        System.out.println("Πίνακας με διαγραμμένη την πρώτη γραμμή");
+        game.printBoard();
+
         // κλείσιμο scanner
         keyboard.close();
 

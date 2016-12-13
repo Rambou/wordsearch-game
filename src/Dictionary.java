@@ -83,4 +83,13 @@ public class Dictionary {
         this.words.removeAll(words);
     }
 
+    public boolean isWord(Word word) {
+        return words.contains(word);
+    }
+
+    public Character getRandomChar() {
+        int i = r.nextInt(alphabet.length);
+        return alphabet[i];
+    }
+
 }
