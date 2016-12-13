@@ -65,11 +65,15 @@ public class Dictionary {
         // εδώ ο πίνακας γεμίζει τυχαία αντικαθιστώντας
         // γράμματα με το ? που αντιστιχεί σε μπαλαντέρ
         // επανάληψη με i μέχρι τυχαίο αριθμό από 0 έως 2
-        for (i = 0; i < r.nextInt(2); i++) {
+        for (i = 0; i < r.nextInt(3); i++) {
             // επιλογή τυχαίας θέσης στον πίνακα και
             // αντικατάσταση γράμματος με το '?'
-            letters.add(r.nextInt(letters.size()), '?');
+            letters.remove(r.nextInt(letters.size()));
+            letters.add('?');
         }
+
+        // ανακάτεμα γραμμάτων
+        Collections.shuffle(letters);
 
         return letters;
     }
@@ -77,11 +81,6 @@ public class Dictionary {
     // αφαιρεί τις δοσμένες λέξεις από την λίστα
     public void removeWords(List<Word> words) {
         this.words.removeAll(words);
-    }
-
-    private List<Character> fillBalander() {
-
-        return;
     }
 
 }
