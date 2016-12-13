@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -82,6 +83,13 @@ public class Main {
 
         // εκτύπωση του board
         System.out.println("Ανακατεμένος της πρώτης στήλης του πίνακα");
+        game.printBoard();
+
+        // αντικατάσταση του γράμματος στην θέση 1,1 με το 1,2
+        game.swapLetters(new Point(0, 0), new Point(0, 1));
+
+        // εκτύπωση του board
+        System.out.println("Πίνακας με αναδιάταξη των γραμμάτων στις θέσεις 0,0 και 0,1 του πίνακα");
         game.printBoard();
 
         // κλείσιμο scanner

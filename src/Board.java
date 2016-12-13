@@ -83,9 +83,23 @@ public class Board implements Powers {
     }
 
     @Override
-    public void swapLetters(Letter a, Letter b) {
+    public void swapLetters(Point a, Point b) {
 
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // κρατάει τα γράμματα που περιέχονται στις αντίστοιχες θέσεις
+        Letter letterA = null, letterB = null;
+
+        // κώδικας για να ψάχνουμε ένα-ένα τα στοιχεία του hashmap
+        for (Map.Entry<Point, Letter> entry : table.entrySet()) {
+            if (entry.getKey().equals(a)) {
+                letterA = entry.getValue();
+            } else if (entry.getKey().equals(b)) {
+                letterB = entry.getValue();
+            }
+        }
+
+        // αντικαθιστά τα γράμματα στις αντίστοιχες θέσεις
+        table.replace(a, letterB);
+        table.replace(b, letterA);
     }
 
     @Override
@@ -103,8 +117,8 @@ public class Board implements Powers {
         List<Letter> valueList = new ArrayList<>(table.values());
         Collections.shuffle(valueList);
         Iterator<Letter> valueIt = valueList.iterator();
-        LinkedHashMap<Point,Letter> newMap = new LinkedHashMap<>(table.size());
-        for(Point p: table.keySet()) {
+        LinkedHashMap<Point, Letter> newMap = new LinkedHashMap<>(table.size());
+        for (Point p : table.keySet()) {
             newMap.put(p, valueIt.next());
         }
         table = newMap;

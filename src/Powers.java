@@ -1,5 +1,7 @@
+import java.awt.*;
+
 public interface Powers {
-    void swapLetters(Letter a, Letter b);
+    void swapLetters(Point a, Point b);
 
     void deleteRow(Integer line);
 

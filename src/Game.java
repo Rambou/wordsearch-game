@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.FileNotFoundException;
 
 public class Game implements Powers {
@@ -56,18 +57,18 @@ public class Game implements Powers {
     }
 
     @Override
-    public void swapLetters(Letter a, Letter b) {
-
+    public void swapLetters(Point a, Point b) {
+        board.swapLetters(a, b);
     }
 
     @Override
     public void deleteRow(Integer line) {
-
+        board.deleteRow(line);
     }
 
     @Override
     public void shuffleLetters() {
-
+        board.shuffleLetters();
     }
 
     @Override
