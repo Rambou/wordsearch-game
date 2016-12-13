@@ -26,17 +26,25 @@ public class Main {
 
         // Ζητήται από τον πάικτη το όνομα
         // και το είδος του παιχνιδιού που θέλει να παίξει
-        System.out.print("Δώσε όνομα: ");
-        name = keyboard.next();
+        if (args.length > 0) {
+            name = args[0];
+        } else {
+            System.out.print("Δώσε όνομα: ");
+            name = keyboard.next();
+        }
 
         // Έλεγχος εισόδου, πρέπει να είναι από 1 ή 2 ή 3
         // έλεγχος με regex
-        System.out.print("Δώσε είδος παιχνιδιού: ");
-        while (!keyboard.hasNext("[1-3]")) {
-            System.out.print("Επέλεξε είδος παιχνιδιού απο 1 έως 3: ");
-            keyboard.next();
+        if (args.length > 1) {
+            mode = Integer.parseInt(args[1]);
+        } else {
+            System.out.print("Δώσε είδος παιχνιδιού: ");
+            while (!keyboard.hasNext("[1-3]")) {
+                System.out.print("Επέλεξε είδος παιχνιδιού απο 1 έως 3: ");
+                keyboard.next();
+            }
+            mode = keyboard.nextInt();
         }
-        mode = keyboard.nextInt();
 
         // Αρχικοποίηση παιχνιδιού
         try {
