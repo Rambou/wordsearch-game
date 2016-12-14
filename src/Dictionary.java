@@ -84,7 +84,12 @@ public class Dictionary {
     }
 
     public boolean isWord(Word word) {
-        return words.contains(word);
+        for (Word w : words) {
+            if (w.getWord().equals(word.getWord())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Character getRandomChar() {

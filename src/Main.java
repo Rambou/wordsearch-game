@@ -107,6 +107,10 @@ public class Main {
         System.out.println("Πίνακας με διαγραμμένη την πρώτη γραμμή");
         game.printBoard();
 
+        // έλεγχος αν η δοσμένη λέξη υπάρχει στην λίστα λέξεων
+        System.out.println("Η λέξη ΑΒΑΔΩΝ ανήκει στις λέξεις: " + game.checkWord(new Word("ΑΒΑΔΩΝ")));
+        System.out.println("Η λέξη ΔΕΝΕΙΝΑΙΛΕΞΗ ανήκει στις λέξεις: " + game.checkWord(new Word("ΔΕΝΕΙΝΑΙΛΕΞΗ")));
+
         // κλείσιμο scanner
         keyboard.close();
 

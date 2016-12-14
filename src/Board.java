@@ -82,6 +82,10 @@ public class Board implements Powers {
         }
     }
 
+    public boolean checkWord(Word w) {
+        return dictionary.isWord(w);
+    }
+
     @Override
     public void swapLetters(Point a, Point b) {
 

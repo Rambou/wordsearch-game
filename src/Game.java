@@ -86,6 +86,9 @@ public class Game implements Powers {
         board.shuffleTable();
     }
 
+    public boolean checkWord(Word w) {
+        return board.checkWord(w);
+    }
 
     enum Mode {
         _5x5, _8x8, _10x10
