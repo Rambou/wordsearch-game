@@ -87,7 +87,9 @@ public class Game implements Powers {
     }
 
     public boolean checkWord(Word w) {
-        return board.checkWord(w);
+        boolean res = board.checkWord(w);
+        System.out.println("Η λέξη " + w.getWord() + ((res) ? " ανήκει" : " δεν ανήκει") + " στις λέξεις.");
+        return res;
     }
 
     enum Mode {

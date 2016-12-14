@@ -108,8 +108,8 @@ public class Main {
         game.printBoard();
 
         // έλεγχος αν η δοσμένη λέξη υπάρχει στην λίστα λέξεων
-        System.out.println("Η λέξη ΑΒΑΔΩΝ ανήκει στις λέξεις: " + game.checkWord(new Word("ΑΒΑΔΩΝ")));
-        System.out.println("Η λέξη ΔΕΝΕΙΝΑΙΛΕΞΗ ανήκει στις λέξεις: " + game.checkWord(new Word("ΔΕΝΕΙΝΑΙΛΕΞΗ")));
+        game.checkWord(new Word("ΑΒΑΔΩΝ"));
+        game.checkWord(new Word("ΔΕΝΕΙΝΑΙΛΕΞΗ"));
 
         // κλείσιμο scanner
         keyboard.close();
