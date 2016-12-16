@@ -1,5 +1,7 @@
 import java.awt.*;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedHashMap;
 
 public class Game implements Powers {
 
@@ -12,11 +14,12 @@ public class Game implements Powers {
     private Player player;
     private Board board;
     private Dictionary dictionary;
+    private Integer boardSize;
 
     // Αρχικοποίση κλάσης παιχνδιού
     public Game(Integer score_to_win, Integer words_to_make, Integer max_swaps, Integer max_row_deletes,
                 Integer max_table_shuffles, Integer max_column_shuffles, Integer max_row_shuffles,
-                String DICTIONARY) throws FileNotFoundException {
+                File DICTIONARY) throws FileNotFoundException {
         // θέτει τους κανόνες
         this.SCORE_TO_WIN = score_to_win;
         this.WORDS_TO_MAKE = words_to_make;
@@ -39,17 +42,19 @@ public class Game implements Powers {
         // Αρχικοποίηση του board
         switch (mode) {
             case _5x5:
-                board = new Board(5, dictionary);
+                boardSize = 5;
                 break;
             case _8x8:
-                board = new Board(8, dictionary);
+                boardSize = 8;
                 break;
             case _10x10:
-                board = new Board(10, dictionary);
+                boardSize = 10;
                 break;
             default:
                 throw new Exception("To mode δεν υποστηρίζεται.");
         }
+
+        board = new Board(boardSize, dictionary);
     }
 
     public void printBoard() {
@@ -62,7 +67,7 @@ public class Game implements Powers {
     }
 
     @Override
-    public void deleteRow(Integer line) {
+    public void deleteRow(Integer line) throws Exception {
         board.deleteRow(line);
     }
 
@@ -72,12 +77,12 @@ public class Game implements Powers {
     }
 
     @Override
-    public void shuffleColumn(int column) {
+    public void shuffleColumn(int column) throws Exception {
         board.shuffleColumn(column);
     }
 
     @Override
-    public void shuffleRow(int row) {
+    public void shuffleRow(int row) throws Exception {
         board.shuffleRow(row);
     }
 
@@ -90,6 +95,14 @@ public class Game implements Powers {
         boolean res = board.checkWord(w);
         System.out.println("Η λέξη " + w.getWord() + ((res) ? " ανήκει" : " δεν ανήκει") + " στις λέξεις.");
         return res;
+    }
+
+    public Integer getBoardSize() {
+        return boardSize;
+    }
+
+    public LinkedHashMap<Point, Letter> getBoardLetters() {
+        return board.getLetter();
     }
 
     enum Mode {

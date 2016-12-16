@@ -9,13 +9,13 @@ public class Dictionary {
     private Character[] alphabet = {'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω'};
     private Random r;
 
-    public Dictionary(String dictionary) throws FileNotFoundException {
+    public Dictionary(File dictionary) throws FileNotFoundException {
         this.r = new Random();
         // αρχικοποίηση λίστας
         this.words = new ArrayList();
 
         // διαβάζει το αρχείο με τις λέξεις
-        Scanner scanner = new Scanner(new File(dictionary));
+        Scanner scanner = new Scanner(dictionary);
 
         // αν βρεί λέξη μέσα στο αρχείο μπορεί να υπάρχουν κενά ή αριθμοί
         // (επιλέγονται μόνο οι λέξεις)
@@ -64,8 +64,8 @@ public class Dictionary {
 
         // εδώ ο πίνακας γεμίζει τυχαία αντικαθιστώντας
         // γράμματα με το ? που αντιστιχεί σε μπαλαντέρ
-        // επανάληψη με i μέχρι τυχαίο αριθμό από 0 έως 2
-        for (i = 0; i < r.nextInt(3); i++) {
+        // επανάληψη με i μέχρι τυχαίο αριθμό από 1 έως 2
+        for (i = 0; i < 1 + (int) (Math.random() * 2); i++) {
             // επιλογή τυχαίας θέσης στον πίνακα και
             // αντικατάσταση γράμματος με το '?'
             letters.remove(r.nextInt(letters.size()));

@@ -1,6 +1,3 @@
-/**
- * Created by rambou on 29/11/2016.
- */
 public class LetterJoker extends Letter {
 
     public LetterJoker(Character letter) {
@@ -9,7 +6,7 @@ public class LetterJoker extends Letter {
 
     @Override
     public void setLetter(Character letter) {
-        this.setLetter(letter);
+        super.setLetter(letter);
     }
 
     @Override

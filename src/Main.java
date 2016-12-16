@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -14,10 +15,10 @@ public class Main {
     static int max_column_shuffles = 2;
     static int max_row_shuffles = 3;
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, Exception {
 
         // Αρχικοποίηση παιχνιδιού και ρυθμίσεων
-        Game game = new Game(score_to_win, words_to_make, max_swaps, max_row_deletes, max_table_shuffles, max_column_shuffles, max_row_shuffles, "Dictionary");
+        Game game = new Game(score_to_win, words_to_make, max_swaps, max_row_deletes, max_table_shuffles, max_column_shuffles, max_row_shuffles, new File(dictionary));
         Integer mode; // Είδος παιχνιδιού
         String name; // Όνομα παίκτη
 
@@ -113,6 +114,9 @@ public class Main {
 
         // κλείσιμο scanner
         keyboard.close();
+
+        // εκκίνηση του board
+        MainGUI bg = new MainGUI();
 
     }
 }

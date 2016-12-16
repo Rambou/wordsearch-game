@@ -25,7 +25,12 @@ public class Board implements Powers {
         }
     }
 
-    private <K, V> void shuffleRow(Map<K, V> map, int r) {
+    private <K, V> void shuffleRow(Map<K, V> map, int r) throws Exception {
+        // έλεγχος εισαγωγής γραμμής
+        if (r >= size || r < 0) {
+            throw new Exception("Λανθασμένη εισαγωγή γραμμής!");
+        }
+
         List<V> valueList = new ArrayList<V>();
         for (K key : map.keySet()) {
             Point p = (Point) key;
@@ -44,7 +49,12 @@ public class Board implements Powers {
         }
     }
 
-    private <K, V> void shuffleColumn(Map<K, V> map, int c) {
+    private <K, V> void shuffleColumn(Map<K, V> map, int c) throws Exception {
+        // έλεγχος εισαγωγής γραμμής
+        if (c >= size || c < 0) {
+            throw new Exception("Λανθασμένη εισαγωγή στήλης!");
+        }
+
         List<V> valueList = new ArrayList<V>();
         for (K key : map.keySet()) {
             Point p = (Point) key;
@@ -68,10 +78,43 @@ public class Board implements Powers {
         List<Character> characters = dictionary.getLetters(size * size);
         System.out.println(characters.size());
         int i = 0, j = 0;
+        // τυχαίος αριθμός που αντίστοιχεί σε
+        // κάποιον χαρακτήρα της λίστας χαρακτήρων
+        // θα χρησιμοποιηθεί για το κόκκινο γράμμα
+        int rand = new Random().nextInt(size * size);
+
+        // επιλογεί πόσα και ποιά θα είναι τα τυχαία
+        // μπλέ γράμματα στο ταμπλό
+        int blue_num = 1 + (int) (Math.random() * 3);
+        Integer blue_rand[] = new Integer[blue_num];
+        for (int index = 0; index < blue_num; index++) {
+            blue_rand[index] = new Random().nextInt(size * size);
+        }
+
         // για κάθε γράμμα της λέξης
-        for (Character c : characters) {
+        for (int index = 0; index < characters.size(); index++) {
+            Character c = characters.get(index);
             Point p = new Point(i, j++);
-            Letter l = new LetterClassic(c);
+            Letter l = null;
+
+            // έλεγχος χαρακτήρα αν είναι μπαλαντέρ κτλ
+            // και δημιουργία κατάλληλης κλάσσης
+            if (c.toString().equals("?")) {
+                l = new LetterJoker(c);
+            } else if (index == rand) {
+                l = new LetterRed(c);
+            } else {
+                for (Integer bi : blue_rand) {
+                    if (index == bi) {
+                        l = new LetterBlue(c);
+                    }
+                }
+
+                if (l == null) {
+                    l = new LetterClassic(c);
+                }
+            }
+
             table.put(p, l);
             // αλλάζει γραμμή μόλις η στήλη j φτάσει το μέγεθος του πίνακα
             // και μηδενίζει στήλη και αυξάνει γραμμή
@@ -84,6 +127,10 @@ public class Board implements Powers {
 
     public boolean checkWord(Word w) {
         return dictionary.isWord(w);
+    }
+
+    public LinkedHashMap<Point, Letter> getLetter() {
+        return table;
     }
 
     @Override
@@ -107,7 +154,12 @@ public class Board implements Powers {
     }
 
     @Override
-    public void deleteRow(Integer row) {
+    public void deleteRow(Integer row) throws Exception {
+        // έλεγχος εισαγωγής γραμμής
+        if (row >= size || row < 0) {
+            throw new Exception("Λανθασμένη εισαγωγή γραμμής!");
+        }
+
         for (Map.Entry<Point, Letter> entry : table.entrySet()) {
             if (entry.getKey().x == row) {
                 // τυχαίο γράμμα
@@ -135,12 +187,12 @@ public class Board implements Powers {
     }
 
     @Override
-    public void shuffleColumn(int column) {
+    public void shuffleColumn(int column) throws Exception {
         shuffleColumn(table, column);
     }
 
     @Override
-    public void shuffleRow(int row) {
+    public void shuffleRow(int row) throws Exception {
         shuffleRow(table, row);
     }
 

@@ -1,6 +1,8 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 
-abstract class Letter {
+abstract class Letter extends JButton {
     private static HashMap<Character, Integer> values = new HashMap<>();
 
     static {
@@ -33,13 +35,15 @@ abstract class Letter {
     //Πίνακας αξιών γραμμάτων
     private Character letter;
     private Integer point;
+    private Color color;
 
     // Αρχικοποίηση κλάσης
     public Letter(Character letter) {
-        this.letter = letter;
         // επιστρέφει τον πόντο της λέξης ανάλογα
         // με το γράμμα του ελληνικού αλφάβητου
         this.point = values.get(letter);
+        setColor(Color.white);
+        setLetter(letter);
     }
 
     // Επιστροφή γράμματος
@@ -50,6 +54,7 @@ abstract class Letter {
     // θέτει το γράμμα
     public void setLetter(Character letter) {
         this.letter = letter;
+        this.setText("<html><center><font size=\"6\">" + letter.toString() + "</font><font  size=\"1\" color=#5858FA>" + ((point != null) ? point : "") + "</font>");
     }
 
     // Επιστροφή πόντου
@@ -59,6 +64,29 @@ abstract class Letter {
 
     // Υπολογισμός πόντου
     abstract int computePoint();
+
+    public boolean isSelected() {
+        // αν το χρώμα του κουμπίου δεν είναι το αρχικό του
+        // τότε θεωρούμε ότι έχει επιλεχθεί
+        return !getBackground().equals(color);
+    }
+
+    public void select() {
+        if (isSelected()) {
+            setBackground(getColor());
+        } else {
+            setBackground(Color.yellow);
+        }
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+        super.setBackground(color);
+    }
 
     @Override
     public String toString() {
