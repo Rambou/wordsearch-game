@@ -75,8 +75,10 @@ public class MainGUI {
 
         // χτίσιμο λέξης
         StringBuilder word = new StringBuilder();
+        Integer points = 0;
         for (Letter l : WordQueue) {
             word.append(l.getLetter());
+            points += l.computePoint();
         }
 
         // έλεγχος λέξης
@@ -85,6 +87,26 @@ public class MainGUI {
             // ενημέρωση των λέξεων που βρέθηκαν
             Integer i = Integer.parseInt(wordsFound.getText().split("/")[0]);
             wordsFound.setText(++i + "/" + WORDS);
+            wordPoints.setText(points.toString());
+            points += Integer.parseInt(score.getText());
+            score.setText(points.toString());
+
+            // καθαρίζει τα γράμματα από την μνήμη
+            WordQueue.removeAll(WordQueue);
+
+            // έλεγχος αν κέρδισε το παιχνίδι
+            if (points >= SCORE) {
+                JOptionPane.showMessageDialog(null, "Κέρδισες το παιχνίδι.", "Νίκησες!!!", JOptionPane.INFORMATION_MESSAGE);
+                newGame_menu_clicked(e);
+                return;
+            }
+
+            // έλεγχος αν τελείωσαν οι λέξεις
+            if (i >= WORDS) {
+                JOptionPane.showMessageDialog(null, "Βρήκες και τις " + WORDS.toString() + " λέξεις και συγκέντρωσες " + score.getText() + " πόντους από τους " + SCORE + ".", "Τέλος παιχνιδιού, έχασες!", JOptionPane.INFORMATION_MESSAGE);
+                newGame_menu_clicked(e);
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "Αποτυχία, η λέξη " + word + " δεν υπάρχει.", "Λάθος", JOptionPane.WARNING_MESSAGE);
         }
@@ -507,6 +529,11 @@ public class MainGUI {
                 JOptionPane.showMessageDialog(null, "Όλες οι βοήθειες ανακατεμάτων γραμμάτων ταμπλό έχουν εξαντληθεί.", "Τέλος!", JOptionPane.WARNING_MESSAGE);
             }
         }
+
+        // απεπιλέγει τα επιλεγμένα καθώς ο πίνακας
+        // ανακατεύτηκε και αυτά ενδεχομένως να βρίσκονται
+        // σε διάσπαρτες θέσεις που δεν ακολουθούν τους κανόνες
+        unSelectAll();
     }
 
     public void initializeGUI() {
@@ -766,11 +793,7 @@ public class MainGUI {
                     public void mouseClicked(MouseEvent e) {
                         if (SwingUtilities.isRightMouseButton(e) || e.isControlDown()) {
                             // απεπιλλέγει όλα τα κουμπιά
-                            for (Letter letter : boardButtons.values()) {
-                                letter.diselect();
-                            }
-                            // αδειάζει τον πίνακα με τις επιλεγμένες λέξεις
-                            WordQueue.removeAll(WordQueue);
+                            unSelectAll();
                         }
                     }
                 });
@@ -778,7 +801,16 @@ public class MainGUI {
         }
 
         // χρειάζεται να καλεσθεί μετά το removeAll()
-        // αυτό συμβαίνει επείδη η πειροχή είναι "βρώμικη"
+        // αυτό συμβαίνει επείδη η περιοχή είναι "βρώμικη"
         jframe.revalidate();
+    }
+
+    private void unSelectAll() {
+        // απεπιλλέγει όλα τα κουμπιά
+        for (Letter letter : boardButtons.values()) {
+            letter.diselect();
+        }
+        // αδειάζει τον πίνακα με τις επιλεγμένες λέξεις
+        WordQueue.removeAll(WordQueue);
     }
 }
