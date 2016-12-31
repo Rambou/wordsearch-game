@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
@@ -759,6 +757,21 @@ public class MainGUI {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         boardLetter_clicked(e);
+                    }
+                });
+
+                // δημιουργία των listener για το κάθε ένα κουμπί
+                letter.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        if (SwingUtilities.isRightMouseButton(e) || e.isControlDown()) {
+                            // απεπιλλέγει όλα τα κουμπιά
+                            for (Letter letter : boardButtons.values()) {
+                                letter.diselect();
+                            }
+                            // αδειάζει τον πίνακα με τις επιλεγμένες λέξεις
+                            WordQueue.removeAll(WordQueue);
+                        }
                     }
                 });
             }

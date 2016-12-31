@@ -79,6 +79,10 @@ abstract class Letter extends JButton {
         }
     }
 
+    public void diselect() {
+        setBackground(getColor());
+    }
+
     public Color getColor() {
         return color;
     }
